@@ -26,7 +26,7 @@ const QuestionType = {
 const greenColor = '#27b67a';
 
 export default function Index() {
-  const [step, setStep] = useState(4);
+  const [step, setStep] = useState(0);
   const total = question_data.length - 1;
   const [selected, setSelected] = useState([]);
   const [freetext, setFreeText] = useState("");
@@ -245,6 +245,13 @@ export default function Index() {
         </View >
       </View>
       <View className='home-screen__footer'>
+        <Text className='home-screen__previous' onTouchStart={() => {
+          setStep(step => step - 1)
+          setSelected([])
+        }} onClick={() => {
+          setStep(step => step - 1)
+          setSelected([])
+        }}>上一题</Text>
         <Text className='home-screen__process'>{step + 1} / {total}</Text>
         <AtProgress percent={Math.round(step / total * 100)} color={greenColor} isHidePercent />
         <AtButton className={'home-screen__next-btn'}
