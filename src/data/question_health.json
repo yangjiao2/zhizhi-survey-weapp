@@ -1,0 +1,89 @@
+[
+  {
+    "type": "multi",
+    "title": "您有以下的健康困扰吗？",
+    "answers": [
+      "食欲不振",
+      "咀嚼/吞咽困难",
+      "便秘",
+      "腹泻",
+      "腹胀",
+      "消化不良",
+      "水肿",
+      "消化不良",
+      "月经不调",
+      "无"
+    ]
+  },
+  {
+    "type": "single",
+    "title": "您目前有任何身体或者精神方面的疾病吗？",
+    "answers": ["是", "否"],
+    "extra": [0]
+  },
+  {
+    "type": "multifree",
+    "title": "请选出以下符合您的情况：",
+    "answers": [
+      "高血脂/脂肪肝",
+      "高血压",
+      "贫血",
+      "高尿酸/痛风",
+      "高血糖 ",
+      "消化不良",
+      "水肿",
+      "其他"
+    ],
+    "freetext": ""
+  },
+  {
+    "type": "single",
+    "title": "是否有正在服用或者使用的药物？",
+    "answers": ["是", "否"],
+    "extra": [0]
+  },
+  {
+    "type": "multifree",
+    "title": "正在服用/使用的药物： ",
+    "answers": ["降压药", "降血脂", "中药", "其他"],
+    "freetext": ""
+  },
+  {
+    "type": "single",
+    "title": "是否药物过敏？",
+    "answers": ["是", "否"]
+  },
+  {
+    "type": "single",
+    "title": "是否食物过敏？",
+    "answers": ["是", "否"]
+  },
+  {
+    "type": "multifree",
+    "title": "请选出过敏的食物：",
+    "answers": ["奶类", "坚果类", "豆类", "蛋类", "海产品", "其他"],
+    "freetext": ""
+  },
+  {
+    "type": "single",
+    "title": "是否乳糖耐受？",
+    "answers": ["是", "否"]
+  },
+  {
+    "type": "single",
+    "title": "是否吸烟？",
+    "answers": ["是", "否"]
+  },
+  {
+    "type": "multifree",
+    "title": "直系亲属家族病史：",
+    "answers": ["心脏病", "糖尿病", "高血压", "中风/脑溢血", "癌症", "痛风"],
+    "freetext": ""
+  },
+  {
+    "type": "multifree",
+    "title": "您的医生、营养师给您提供了哪些营养建议？",
+    "answers": [],
+    "freetext": ""
+  }
+]
