@@ -13,6 +13,7 @@ import leftArrow from './../../asset/leftArrow.png'
 import rightArrow from './../../asset/rightArrow.png'
 
 import './index.less'
+import answer_template from './../../data/answer.json'
 import question_data from './../../data/question.json'
 import question_health from './../../data/question_health.json'
 import question_male from './../../data/question_male.json'
@@ -22,8 +23,9 @@ import question_med from './../../data/question_med.json'
 
 import ContentRenderer from './content'
 import storage from './../../utils/database'
+import storeResult from './answer'
 
-storage();
+// storage();
 
 const QuestionType = {
   'single': '单选题',
@@ -33,15 +35,17 @@ const QuestionType = {
   'picker-left': '单选题',
   'slider': '单选题',
   'text': '问答',
+  'input': '简答',
 };
 
 const greenColor = '#27b67a';
-const questions = [...question_data, ...question_diet, ...question_med]
+const questions = [...question_data]//, ...question_diet, ...question_med]
 export default function Index() {
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(7);
   const total = questions.length - 1;
   const [selected, setSelected] = useState([]);
   const [freetext, setFreeText] = useState("");
+  const [result, setResult] = useState(answer_template);
 
   const badge = (text) => {
     return (
@@ -73,14 +77,21 @@ export default function Index() {
   }, [selected]);
 
   const setFreeTextCb = useCallback((value) => {
-    setSelected(value);
+    setFreeText(value);
   }, [freetext]);
 
-  const { answers, type, title } = questions[step];
-  console.log(answers);
-  const extra: any[] = questions[step]["extra"] ?? [];
-  console.log(extra);
+  const setResultCb = useCallback((step, selected, freetext) => {
+    console.log('setResultCb', selected)
+    const updatedresult = storeResult(result, step + 1, selected, freetext);
+    setSelected([])
+    console.log('setResultCb1', selected)
+    setFreeText("")
+    setResult(updatedresult)
 
+  }, [selected, step, freetext, result]);
+
+  const { answers, type, title } = questions[step];
+  const extra: any[] = questions[step]["extra"] ?? [];
   return (
     <View>
       <View className='home-screen__background'>
@@ -116,20 +127,22 @@ export default function Index() {
         {step < questions.length - 1 ? (<AtButton className={'home-screen__next-btn'}
           type='primary' circle={true}
           onClick={() => {
-            console.log(questions[step], questions[step]["extra"]);
+            console.log(questions[step], extra);
             if (extra) {
+              console.log(selected.includes(extra[0]))
               if (extra.length == 1 && selected.includes(extra[0])) {
                 setStep(step => step + 1)
               } else {
                 let counter = 0;
-                while (questions[counter++]["extra"] != undefined) {
+                while (questions[counter]["extra"] != undefined) {
                   counter++;
                 }
-                setStep(step => step + counter)
+                console.log(counter);
+                setStep(step => step + counter + extra.length);
               }
             }
-            setSelected([])
-            setFreeText("")
+            setResultCb(step, selected, freetext);
+            console.log(selected)
           }
           }>
           下一题
@@ -149,8 +162,10 @@ export default function Index() {
                 //     setStep(step => step + counter)
                 //   }
                 // }
-                setSelected([])
-                setFreeText("")
+                // storeResult(result, step + 1, selected, freetext);
+                // setSelected([]);
+                // setFreeText("");
+                setResultCb(step, selected, freetext);
               }
               }>
               完成

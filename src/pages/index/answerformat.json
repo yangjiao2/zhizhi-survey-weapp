@@ -1,0 +1,90 @@
+{
+  "basic_info": {
+    "gender": "MALE",
+    "age": 22,
+    "height": 1.8,
+    "weight": 50,
+    "pregnancy_status": "NON_PREGNANT"
+  },
+  "health_goals": [
+    "IMMUNITY",
+    "FATIGUE",
+    "WEIGHT",
+    "SKIN",
+    "FAT_LOSS",
+    "WORKOUT",
+    "EYES",
+    "BRAIN",
+    "SLEEP",
+    "DIGESTION",
+    "BONES"
+  ],
+  "weight_history": {
+    "weight_change": 30
+  },
+  "health_history": {
+    "health_concerns": [
+      "APPETITE",
+      "MASTICATION",
+      "CONSTIPATION",
+      "DIARRHEA",
+      "BLOATING",
+      "DIGESTION",
+      "WEIGHT",
+      "MENSTRUATION",
+      "SLEEP"
+    ],
+    "disease": [
+      "HYPERLIPIDEMIA",
+      "HYPERTENSION",
+      "HYPERURICEMIA",
+      "HYPERGLYCEMIA",
+      "ANEMIA",
+      "OTHERS"
+    ],
+    "allergic": true,
+    "allergies": [
+      "DAIRIES",
+      "EGGS",
+      "PEANUTS",
+      "NUTS",
+      "SOYBEANS",
+      "WHEAT",
+      "FISH",
+      "SHELLFISH",
+      "OTHERS"
+    ],
+    "lactose_intolerant": false,
+    "drinking": true,
+    "smoking": true
+  },
+  "nutrition_history": {
+    "special_diet": "VEGETARIAN",
+    "dietary_supplements": [
+      "MULTIVITAMINS",
+      "FISH_OIL",
+      "VITAMIN_B_COMPLEX",
+      "FIBER",
+      "VITAMIN_B1",
+      "VITAMIN_B2",
+      "VITAMIN_B3",
+      "VITAMIN_B6_B12_FOLATE",
+      "VITAMIN_B5",
+      "VITAMIN_B7",
+      "CHOLINE",
+      "VITAMIN_C",
+      "CALCIUM",
+      "VITAMIN_D",
+      "PROTEIN"
+    ],
+    "picky": false,
+    "avoid_food": [],
+    "water_consumed": 0
+  },
+  "diet_info": {},
+  "workout_info": {
+    "workout_freq": "LOW",
+    "cardio_time": 0,
+    "anaerobic_time": 0
+  }
+}
