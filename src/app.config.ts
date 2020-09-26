@@ -1,5 +1,5 @@
 export default {
-  pages: ["pages/index/index"],
+  pages: ["pages/index/index", "pages/index/result"],
   window: {
     backgroundTextStyle: "light",
     // navigationBarTextStyle: "custom",

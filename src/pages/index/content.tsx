@@ -1,6 +1,6 @@
 import React, { Component, useState, useCallback } from 'react'
 import { View, Text, Image, Button, Textarea, Picker, PickerView, PickerViewColumn, Slider } from '@tarojs/components'
-import { AtProgress, AtButton, AtNavBar, AtTextarea, AtList, AtListItem, AtMessage, AtToast } from 'taro-ui'
+import { AtProgress, AtButton, AtNavBar, AtTextarea, AtList, AtListItem, AtInput, AtToast } from 'taro-ui'
 import Taro from '@tarojs/taro'
 import classNames from 'classnames'
 
@@ -47,7 +47,6 @@ const Content = (props) => {
     }
 
     const onSelect = (value) => {
-        console.log(selected, value)
         setSelected(selected1 => {
             return [...selected1, value];
         });
@@ -56,7 +55,6 @@ const Content = (props) => {
         setSelected(selected1 => {
             const prevSelected = selected1;
             const newSelected = prevSelected.filter((item, index) => {
-                console.log(index, value);
                 return index == value
             });
             return newSelected;
@@ -65,7 +63,6 @@ const Content = (props) => {
 
     const { answers, type, title } = questions[step];
     const extra: any[] = questions[step]["extra"] ?? [];
-    console.log(extra);
     const inputs =
         (answers as Array<any>).map((answer, index) => {
             return { 'text': answer, 'isSelected': selected.includes(index) };
@@ -81,6 +78,22 @@ const Content = (props) => {
                     <Button className={classNames({ 'component__column-btn': true, 'component__btn-selected': selected[0] == 1 })}
                         onClick={(_e) => { setSelected([1]) }}>{inputs[1].text}</Button>
                 </View>
+            </View>
+        )
+    }
+    if (type == "input") {
+        return (
+            <View className='component__row-content'>
+                <AtInput
+                    name='value'
+                    title=''
+                    type='text'
+                    placeholder={inputs[0].text || ''}
+                    value={freetext}
+                    onChange={(value) => {
+                        setFreeText(value);
+                    }}
+                />
             </View>
         )
     }
@@ -105,7 +118,6 @@ const Content = (props) => {
                     {type == "multifree" && (
                         <AtTextarea value={freetext}
                             onChange={(value) => {
-                                console.log(value);
                                 setFreeText(value);
                             }}
                             placeholder='请输入'
